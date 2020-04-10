@@ -1,0 +1,42 @@
+
+
+  body {
+      background-color: rgb(206,255,184);
+  }
+  .image{
+      position: absolute;
+      margin-left: 10%;
+      margin-top: 5%;
+  }
+  .title{
+      size:720px;
+
+  }
+  .art{
+      position: absolute;
+      margin-left: 60% ;
+      margin-top: 5%;
+      font-family: 'Lora', serif;
+      color: rgb(145,106,99);
+      font-size: 30px;
+  }
+  input[type=submit] {
+      background: rgb(210,260,190);
+      font-family: 'Lora', serif;
+      font-size: 30px;
+      color: rgb(145,106,99);
+
+  }
+
+  input[type=submit]:hover {
+      background: rgb(220,270,170);
+  }
+  input[type=text]{
+      background: rgb(210,260,190);
+      font-family: 'Lora', serif;
+      font-size: 30px;
+      color: rgb(145,106,99);
+
+  }
+
+

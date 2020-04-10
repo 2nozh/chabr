@@ -1,0 +1,35 @@
+
+
+    body {
+    background-color: rgb(206,255,184);
+        font-family: 'Lora', serif;
+        color: rgb(145,106,99);
+        font-size: 30px;
+    }
+
+   h2#tabs-list {
+       text-align: center;
+       border-bottom: yellow;
+       margin: 0px;
+       padding: 0px;
+   }
+
+   label.panel-label {
+       margin-left: 0%;
+       display: block;
+       width: 100%;
+       color: white;
+       cursor: pointer;
+       background-color: rgb(145,106,99);
+       transition-property: background-color, color;
+   }
+
+  label.panel-label:hover {
+       color: rgb(206,255,184);
+   }
+    h1.title{
+    font-family: "Adobe Heiti Std R";
+    size: 72px;
+    text-align: center;
+    border-bottom: antiquewhite;
+}
