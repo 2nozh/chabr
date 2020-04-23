@@ -1,6 +1,32 @@
 <?php
-    echo "<h1 class='title'>Registration</h1>";
-    require "DBconnection.php"
+//подключаем бд
+    require "DBconnection.php";
+//принимаем данные регистрации
+    $data=$_POST;
+//при нажатии кнопки, заносим данные в бд
+    if(isset($data['btnRegmi']))
+    {
+        echo "gulyay rvanina";
+        if($conn){
+            $stmt = $conn->query('SELECT * FROM Sotrudnik');
+            while ($row = $stmt->fetch())
+            {
+                echo "<h2>".$row['name'] . "</h2>";
+            }
+        echo "<h1></h1>";
+            $stmt=$conn->prepare("Insert into users (login,password)values (:login,:password)");
+            $stmt->bindParam(':login',$data['login']);
+            $stmt->bindParam(':password',$data['password']);
+            $stmt->execute();
+
+
+        }else echo "failed - ";
+    }
+    else{
+        echo "ne podtverzhdeno";
+    }
+
+
 ?>
 <title>Registration</title>
 <link rel="stylesheet" href="registration.css">
@@ -16,7 +42,7 @@
 </head>
 <body class="back">
 <div class="form-wrap" align="center">
-    <form id="registration">
+    <form id="registration" action="registration.php" method="POST">
         <div class="head">
             <p>Регистрация</p>
         </div>
@@ -64,7 +90,7 @@
             <span class="bar"></span>
             <label>Повторите пароль</label>
         </div>
-        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-success" name="btnRegmi">Зарегистрироваться</button>
     </form>
 </div>
 </body>
