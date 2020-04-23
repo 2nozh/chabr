@@ -8,9 +8,10 @@
 <body>
 
 <?php
-$name=$_POST["name"];
+$login=$_POST["login"];
 $password=$_POST["password"];
-echo "<h1 class='title'>" . $name . ", welcome</h1>";
+
+echo "<h1 class='title'>" . $login . ", welcome</h1>";
 
 if($conn){
     echo "connected";

@@ -10,7 +10,7 @@
 
     try {
         $conn=new PDO('mysql:host=localhost;dbname=scheme',$HomeUserName,$HomePwd);
-        echo "<p>Connected </p>";
+        echo "<p>Connected to DB</p>";
     }catch (PDOException $e){
         print "Error!!!!" . $e->getMessage() . "<br/>";
         die();

@@ -8,17 +8,39 @@
     {
         echo "gulyay rvanina";
         if($conn){
-            $stmt = $conn->query('SELECT * FROM Sotrudnik');
-            while ($row = $stmt->fetch())
-            {
-                echo "<h2>".$row['name'] . "</h2>";
-            }
+
         echo "<h1></h1>";
+
             $stmt=$conn->prepare("Insert into users (login,password)values (:login,:password)");
             $stmt->bindParam(':login',$data['login']);
             $stmt->bindParam(':password',$data['password']);
             $stmt->execute();
 
+            $stmt1=$conn->prepare("SELECT user_ID from users where (login=?) and (password=?)");
+            $stmt1->execute(array($data['login'],$data['password']));
+
+                while ($row = $stmt1->fetch())
+                {
+                    //echo "<h2>".$row[0] ."</h2>";
+                    $user_ID= $row[0];
+                   // echo $user_ID;
+                }
+            echo "<p>user id ".$user_ID." registered successfully</p>";
+
+                $gender='null';
+                if(isset($data['male']))
+                $gender='M';
+                else $gender='F';
+
+            $stmt2=$conn->prepare("INSERT INTO sotrudnik (name,lastname,fathername,gender,mail,user_ID) VALUES(:name,:lastname,:fathername,:gender,:mail,:user_ID);
+");
+            $stmt2->bindParam(':name',$data['firstname']);
+            $stmt2->bindParam(':lastname',$data['lastname']);
+            $stmt2->bindParam(':fathername',$data['patronymic']);
+            $stmt2->bindParam(':gender',$gender);
+            $stmt2->bindParam(':mail',$data['email']);
+            $stmt2->bindParam(':user_ID',$user_ID);
+            $stmt2->execute();
 
         }else echo "failed - ";
     }
@@ -62,11 +84,11 @@
             <label>Отчество</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" checked>
+            <input type="radio" class="custom-control-input" id="defaultInline1" name="female" checked>
             <label class="custom-control-label" for="defaultInline1"> Женский </label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+            <input type="radio" class="custom-control-input" id="defaultInline2" name="male">
             <label class="custom-control-label" for="defaultInline2"> Мужской </label>
         </div>
 
